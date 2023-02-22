@@ -26,7 +26,7 @@ else:
             buttonz=ReplyKeyboardMarkup(
             [
                 ["start⚡️","help📚","DC"],
-                [,"ping📡","status📊"]
+                ["ping📡","status📊"]
                         
             ],
             resize_keyboard=True
