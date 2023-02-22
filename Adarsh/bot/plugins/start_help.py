@@ -17,7 +17,7 @@ if MY_PASS:
             buttonz=ReplyKeyboardMarkup(
             [
                 ["start⚡️","help📚","DC"],
-                ["ping📡","status📊"]
+                ["ping📡","status📊","/set_api"]
                         
             ],
             resize_keyboard=True
@@ -26,7 +26,7 @@ else:
             buttonz=ReplyKeyboardMarkup(
             [
                 ["start⚡️","help📚","DC"],
-                ["ping📡","status📊"]
+                ["ping📡","status📊","/set_api"]
                         
             ],
             resize_keyboard=True
@@ -131,7 +131,7 @@ async def help_handler(bot, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [InlineKeyboardButton("💁‍♂️ Owner", url="https://t.me/logesh_bots")],
-                [InlineKeyboardButton("💥 channel", url="https://t.me/logeshbots")]
+                [InlineKeyboardButton("💥 channel", url="https://t.me/urlshortenlink")]
             ]
         )
     )
