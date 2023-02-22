@@ -26,7 +26,7 @@ async def start(bot, update):
     
 @StreamBot.on_message(filters.command("list"))
 async def list(l, m):
-    LIST_MSG = "Hi! {} Here is a list of all my commands \n \n 1 . `start⚡️` \n 2. `help📚` \n 3. `ping📡` \n 4. `status📊` \n 5. `DC` this tells your telegram dc \n 8. "
+    LIST_MSG = "Hi! {} Here is a list of all my commands \n \n 1 . `start⚡️` \n 2. `help📚` \n 3. `ping📡` \n 4. `status📊` \n 5. `DC` this tells your telegram dc "
     await l.send_message(chat_id = m.chat.id,
         text = LIST_MSG.format(m.from_user.mention(style="md"))
         
@@ -44,7 +44,7 @@ async def ping(b, m):
     
 @StreamBot.on_message(filters.command("shortener_api") & filters.private )
 async def shortener_api_handler(bot, m):
-    user_id = (await bot.get_chat(Var.OWNER_USERNAME)).id
+    user_id = m.from_user.id
 
     user = await db.get_user(user_id)
     cmd = m.command
