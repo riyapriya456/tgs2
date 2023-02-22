@@ -1,7 +1,3 @@
-pyrogram<=2.0.33
-tgcrypto<=1.2.3
-aiohttp<=3.8.1
-python-dotenv<=0.20.0
 motor
 aiofiles
 dnspython
@@ -10,3 +6,7 @@ requests
 psutil
 pyromod
 shortzy
+aiohttp
+pyrogram>=2.0.30
+python-dotenv
+tgcrypto
