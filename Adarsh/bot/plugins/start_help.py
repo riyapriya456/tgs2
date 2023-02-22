@@ -16,8 +16,8 @@ from pyrogram.types import ReplyKeyboardMarkup
 if MY_PASS:
             buttonz=ReplyKeyboardMarkup(
             [
-                ["start⚡️","help📚","login🔑","DC"],
-                ["Subscribe ❤️","ping📡","status📊","maintainers😎"]
+                ["start⚡️","help📚","DC"],
+                ["ping📡","status📊"]
                         
             ],
             resize_keyboard=True
@@ -26,7 +26,7 @@ else:
             buttonz=ReplyKeyboardMarkup(
             [
                 ["start⚡️","help📚","DC"],
-                ["Subscribe ❤️","ping📡","status📊","maintainers😎"]
+                [,"ping📡","status📊"]
                         
             ],
             resize_keyboard=True
@@ -56,7 +56,7 @@ async def start(b, m):
                 except UserNotParticipant:
                      await StreamBot.send_photo(
                         chat_id=m.chat.id,
-                        photo="https://telegra.ph/file/68259e3c723b935e22e69.jpg",
+                        photo="https://telegra.ph/file/a60c53ac900ad3e3761e2.jpg",
                         caption="<i>𝙹𝙾𝙸𝙽 CHANNEL 𝚃𝙾 𝚄𝚂𝙴 𝙼𝙴🔐</i>",
                         reply_markup=InlineKeyboardMarkup(
                             [
@@ -72,14 +72,14 @@ async def start(b, m):
                     print(e)
                     await b.send_message(
                         chat_id=m.chat.id,
-                        text="<i>𝓢𝓸𝓶𝓮𝓽𝓱𝓲𝓷𝓰 𝔀𝓮𝓷𝓽 𝔀𝓻𝓸𝓷𝓰</i> <b> <a href='https://t.me/greymatters_bots_discussion'>CLICK HERE FOR SUPPORT </a></b>",
+                        text="<i>𝓢𝓸𝓶𝓮𝓽𝓱𝓲𝓷𝓰 𝔀𝓮𝓷𝓽 𝔀𝓻𝓸𝓷𝓰</i> <b> <a href='https://t.me/urlshortenadminbot'>CLICK HERE FOR SUPPORT </a></b>",
 
                         disable_web_page_preview=True)
                     return
             await StreamBot.send_photo(
                 chat_id=m.chat.id,
-                photo ="https://telegra.ph/file/19eeb26fa2ce58765917a.jpg",
-                caption =f'Hi {m.from_user.mention(style="md")}!,\nI am Telegram File to Link Generator Bot with Channel support.\nSend me any file and get a direct download link and streamable link.!',
+                photo ="https://telegra.ph/file/a60c53ac900ad3e3761e2.jpg",
+                caption =f'Hi {m.from_user.mention(style="md")}!,\nI am URLSHORTEN.in File to Link Generator Bot.\nSend me any file and get a direct download link.!',
                 reply_markup=buttonz)
 
 
@@ -105,8 +105,8 @@ async def help_handler(bot, message):
         except UserNotParticipant:
             await StreamBot.send_photo(
                 chat_id=message.chat.id,
-                photo="https://telegra.ph/file/ca10e459bc6f48a4ad0f7.jpg",
-                Caption="**𝙹𝙾𝙸𝙽 𝚂𝚄𝙿𝙿𝙾𝚁𝚃 𝙶𝚁𝙾𝚄𝙿 𝚃𝙾 𝚄𝚂𝙴 ᴛʜɪs Bᴏᴛ!**\n\n__Dᴜᴇ ᴛᴏ Oᴠᴇʀʟᴏᴀᴅ, Oɴʟʏ Cʜᴀɴɴᴇʟ Sᴜʙsᴄʀɪʙᴇʀs ᴄᴀɴ ᴜsᴇ ᴛʜᴇ Bᴏᴛ!__",
+                photo="https://telegra.ph/file/a60c53ac900ad3e3761e2.jpg",
+                Caption="**𝙹𝙾𝙸𝙽 𝚂𝚄𝙿𝙿𝙾𝚁𝚃 Channel 𝚃𝙾 𝚄𝚂𝙴 ᴛʜɪs Bᴏᴛ!**\n\n__Dᴜᴇ ᴛᴏ Oᴠᴇʀʟᴏᴀᴅ, Oɴʟʏ Cʜᴀɴɴᴇʟ Sᴜʙsᴄʀɪʙᴇʀs ᴄᴀɴ ᴜsᴇ ᴛʜᴇ Bᴏᴛ!__",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -120,7 +120,7 @@ async def help_handler(bot, message):
         except Exception:
             await bot.send_message(
                 chat_id=message.chat.id,
-                text="__Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ Wʀᴏɴɢ. Cᴏɴᴛᴀᴄᴛ ᴍᴇ__ [Support](https://t.me/greymatters_bots_discussion).",
+                text="__Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ Wʀᴏɴɢ. Cᴏɴᴛᴀᴄᴛ ᴍᴇ__ [Support](https://t.me/urlshortenadminbot).",
                 disable_web_page_preview=True)
             return
     await message.reply_text(
@@ -130,8 +130,8 @@ async def help_handler(bot, message):
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton("💁‍♂️ Owner", url="https://t.me/CR_0O0")],
-                [InlineKeyboardButton("💥 Source Code", url="https://t.me/DynoBots")]
+                [InlineKeyboardButton("💁‍♂️ Owner", url="https://t.me/logesh_bots")],
+                [InlineKeyboardButton("💥 channel", url="https://t.me/logeshbots")]
             ]
         )
     )
