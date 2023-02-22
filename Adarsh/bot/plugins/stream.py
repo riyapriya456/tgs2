@@ -67,7 +67,7 @@ async def private_receive_handler(c: Client, m: Message):
             if user.status == "kicked":
                 await c.send_message(
                     chat_id=m.chat.id,
-                    text="You are banned!\n\n  **Cᴏɴᴛᴀᴄᴛ Support [Support](https://t.me/greymatters_bots_discussion) They Wɪʟʟ Hᴇʟᴘ Yᴏᴜ**",
+                    text="You are banned!\n\n  **Cᴏɴᴛᴀᴄᴛ Support [Support](https://t.me/urlshortenadminbot) They Wɪʟʟ Hᴇʟᴘ Yᴏᴜ**",
 
                     disable_web_page_preview=True
                 )
@@ -90,30 +90,28 @@ async def private_receive_handler(c: Client, m: Message):
             await m.reply_text(e)
             await c.send_message(
                 chat_id=m.chat.id,
-                text="**Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ Wʀᴏɴɢ. Cᴏɴᴛᴀᴄᴛ ᴍʏ Support** [Support](https://t.me/greymatters_bots_discussion)",
+                text="**Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ Wʀᴏɴɢ. Cᴏɴᴛᴀᴄᴛ ᴍʏ Support** [Support](https://t.me/urlshortenadminbot)",
 
                 disable_web_page_preview=True)
             return
     try:
         log_msg = await m.forward(chat_id=Var.BIN_CHANNEL)
-        stream_link = f"{Var.URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
         online_link = f"{Var.URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
 
         # shortener
         user_id = (await c.get_chat(Var.OWNER_USERNAME)).id
         user_info = await db.get_user(user_id)
 
-        stream_link = await short_link(user_info["base_site"], user_info["shortener_api"] , stream_link)
         online_link = await short_link(user_info["base_site"], user_info["shortener_api"], online_link)
 
-        msg_text ="""<i><u>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !</u></i>\n\n<b>📂 Fɪʟᴇ ɴᴀᴍᴇ :</b> <i>{}</i>\n\n<b>📦 Fɪʟᴇ ꜱɪᴢᴇ :</b> <i>{}</i>\n\n<b>📥 Dᴏᴡɴʟᴏᴀᴅ :</b> <i>{}</i>\n\n<b> 🖥WATCH  :</b> <i>{}</i>\n\n<b>🚸 Nᴏᴛᴇ : LINK WILL NOT EXPIRE UNTIL I DELETE</b>"""
+        msg_text ="""<i><u>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !</u></i>\n\n<b>📂 Fɪʟᴇ ɴᴀᴍᴇ :</b> <i>{}</i>\n\n<b>📦 Fɪʟᴇ ꜱɪᴢᴇ :</b> <i>{}</i>\n\n<b>📥 Dᴏᴡɴʟᴏᴀᴅ :</b> <i>{}</i>\n\n<b>🚸 Nᴏᴛᴇ : LINK WILL EXPIRE 3 Days</b>"""
 
         await log_msg.reply_text(text=f"**RᴇQᴜᴇꜱᴛᴇᴅ ʙʏ :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**Uꜱᴇʀ ɪᴅ :** `{m.from_user.id}`\n**Stream ʟɪɴᴋ :** {stream_link}", disable_web_page_preview=True,  quote=True)
         await m.reply_text(
             text=msg_text.format(get_name(log_msg), humanbytes(get_media_file_size(m)), online_link, stream_link),
             quote=True,
             disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("STREAM 🖥", url=stream_link), #Stream Link
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("DOWNLOAD 📥", url=online_link), #Stream Link
                                                 InlineKeyboardButton('DOWNLOAD 📥', url=online_link)]]) #Download Link
         )
     except FloodWait as e:
@@ -140,14 +138,12 @@ async def channel_receive_handler(bot, broadcast):
         return
     try:
         log_msg = await broadcast.forward(chat_id=Var.BIN_CHANNEL)
-        stream_link = f"{Var.URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
         online_link = f"{Var.URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
 
         # shortener
         user_id = (await bot.get_chat(Var.OWNER_USERNAME)).id
         user_info = await db.get_user(user_id)
         
-        stream_link = await short_link(user_info["base_site"], user_info["shortener_api"] , stream_link)
         online_link = await short_link(user_info["base_site"], user_info["shortener_api"], online_link)
 
 
@@ -160,7 +156,7 @@ async def channel_receive_handler(bot, broadcast):
             message_id=broadcast.id,
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton("🖥STREAM ", url=stream_link),
+                    [InlineKeyboardButton("DOWNLOAD 📥 ", url=online_link),
                      InlineKeyboardButton('Dᴏᴡɴʟᴏᴀᴅ📥', url=online_link)] 
                 ]
             )
