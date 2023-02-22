@@ -99,12 +99,12 @@ async def private_receive_handler(c: Client, m: Message):
         online_link = f"{Var.URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
 
         # shortener
-        user_id = (await c.get_chat(Var.OWNER_USERNAME)).id
+        user_id = m.from_user.id
         user_info = await db.get_user(user_id)
 
         online_link = await short_link(user_info["base_site"], user_info["shortener_api"], online_link)
 
-        msg_text ="""<i><u>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !</u></i>\n\n<b>📂 Fɪʟᴇ ɴᴀᴍᴇ :</b> <i>{}</i>\n\n<b>📦 Fɪʟᴇ ꜱɪᴢᴇ :</b> <i>{}</i>\n\n<b>📥 Dᴏᴡɴʟᴏᴀᴅ :</b> <i>{}</i>\n\n<b>🚸 Nᴏᴛᴇ : LINK WILL EXPIRE 3 Days</b>"""
+        msg_text ="""<i><u>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !</u></i>\n\n<b>📂 Fɪʟᴇ ɴᴀᴍᴇ :</b> <i>{}</i>\n\n<b>📦 Fɪʟᴇ ꜱɪᴢᴇ :</b> <i>{}</i>\n\n<b>📥 Dᴏᴡɴʟᴏᴀᴅ :</b> <i>{}</i>\n\n<b>🚸 Nᴏᴛᴇ : LINK WILL EXPIRE 3 DAYS</b>"""
 
         await log_msg.reply_text(text=f"**RᴇQᴜᴇꜱᴛᴇᴅ ʙʏ :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**Uꜱᴇʀ ɪᴅ :** `{m.from_user.id}`\n**Stream ʟɪɴᴋ :** {online_link}", disable_web_page_preview=True,  quote=True)
         await m.reply_text(
@@ -141,7 +141,7 @@ async def channel_receive_handler(bot, broadcast):
         online_link = f"{Var.URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
 
         # shortener
-        user_id = (await bot.get_chat(Var.OWNER_USERNAME)).id
+        user_id = m.from_user.id
         user_info = await db.get_user(user_id)
         
         online_link = await short_link(user_info["base_site"], user_info["shortener_api"], online_link)
