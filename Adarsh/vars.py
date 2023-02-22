@@ -36,7 +36,7 @@ class Var(object):
     HAS_SSL=bool(getenv('HAS_SSL',False))
     URL = f"https://{FQDN}/" if HAS_SSL else f"http://{FQDN}/"
     DATABASE_URL = str(getenv('DATABASE_URL'))
-    UPDATES_CHANNEL = str(getenv('UPDATES_CHANNEL', none))
+    UPDATES_CHANNEL = str(getenv('UPDATES_CHANNEL', None))
     BANNED_CHANNELS = list(
         {
             int(x)
