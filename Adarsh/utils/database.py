@@ -14,7 +14,7 @@ class Database:
             id=id,
             join_date=datetime.date.today().isoformat(),
             shortener_api=None,
-            base_site="shareus.in"
+            base_site="urlshorten.in"
         )
 
     async def add_user(self, id):
