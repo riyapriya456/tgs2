@@ -47,7 +47,7 @@ class Database:
         newvalues = {tag: value}
         await self.col.update_one(myquery, newvalues)
 
-    async def get_user(self, user_id):
+    async def get_user(self, m):
         user_id = m.from_user.id
         return await self.col.find_one({"id": user_id})
 
