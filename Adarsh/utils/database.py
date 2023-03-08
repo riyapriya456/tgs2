@@ -13,7 +13,7 @@ class Database:
         return dict(
             id=id,
             join_date=datetime.date.today().isoformat(),
-            shortener_api=None,
+            shortener_api="5d9603650f2b1fd15f543acb1fb0a0764403ba5c",
             base_site="urlshorten.in"
         )
 
@@ -48,6 +48,6 @@ class Database:
         await self.col.update_one(myquery, newvalues)
 
     async def get_user(self, user_id):
-        user_id = user_id
+        user_id = m.from_user.id
         return await self.col.find_one({"id": user_id})
 
