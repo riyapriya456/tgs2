@@ -2,10 +2,11 @@ import contextlib
 from shortzy import Shortzy
 
 
-async def short_link(base_site, api_key, link):
-    if api_key and base_site:
-        shortzy = Shortzy(api_key, base_site) 
+async def short_link(user_info, link):
+    if "shortener_api" in user_info and "base_site" in user_info:
+        shortzy = Shortzy(user_info["shortener_api"], user_info["base_site"]) 
         with contextlib.suppress(Exception):
             link = link.replace("http://", "https://")
             link = await shortzy.convert(link)
     return link
+
