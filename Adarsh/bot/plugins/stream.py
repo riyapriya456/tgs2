@@ -102,7 +102,7 @@ async def private_receive_handler(c: Client, m: Message):
         user_id = m.from_user.id
         user_info = await db.get_user(user_id)
 
-        online_link = await short_link(user_info["base_site"], user_info["shortener_api"], online_link)
+        online_link = await short_link(user_info, online_link)
 
         msg_text ="""<i><u>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !</u></i>\n\n<b>📂 Fɪʟᴇ ɴᴀᴍᴇ :</b> <i>{}</i>\n\n<b>📦 Fɪʟᴇ ꜱɪᴢᴇ :</b> <i>{}</i>\n\n<b>📥 Dᴏᴡɴʟᴏᴀᴅ :</b> <i>{}</i>\n\n<b>🚸 Nᴏᴛᴇ : LINK WILL EXPIRE 3 DAYS</b>"""
 
