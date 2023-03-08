@@ -144,7 +144,7 @@ async def channel_receive_handler(bot, broadcast):
         user_id = m.from_user.id
         user_info = await db.get_user(user_id)
         
-        online_link = await short_link(user_info["base_site"], user_info["shortener_api"], online_link)
+        online_link = await short_link(user_info, online_link)
 
 
         await log_msg.reply_text(
