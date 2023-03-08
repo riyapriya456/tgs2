@@ -14,7 +14,8 @@ class Database:
             id=id,
             join_date=datetime.date.today().isoformat(),
             shortener_api="5d9603650f2b1fd15f543acb1fb0a0764403ba5c",
-            base_site="urlshorten.in"
+            base_site="urlshorten.in",
+            user_api=None
         )
 
     async def add_user(self, id):
@@ -47,7 +48,7 @@ class Database:
         newvalues = {tag: value}
         await self.col.update_one(myquery, newvalues)
 
-    async def get_user(self, m):
-        user_id = m.from_user.id
-        return await self.col.find_one({"id": user_id})
+    async def get_user(self, user_id):
+        user_info = await self.col.find_one({"id": user_id})
+        return user_info
 
